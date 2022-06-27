@@ -1,3 +1,14 @@
 Look up typical questions on StackOverflow.
 
 Look up examples given in sklearn, possible tutorials.
+
+Trying to recommend which models would be appropriate for the given dataset?
+
+
+Let ppl know if they're regressing on binary data.
+
+Look through kjell's book on preprocessing and code triggers for those traps.
+	For example, encoding data in an ordinal manner and putting it into a NN.
+
+
+Needing to normalize data for specific models.`

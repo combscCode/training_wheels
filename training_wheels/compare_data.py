@@ -12,4 +12,7 @@ class DatasetComparer():
 	def is_same(self, Y):
 		return self.X is Y
 
-	
+	def is_unbalanced(self):
+		continue
+		# TODO: Make functions that will let user know if
+		# they are splitting training/testing in a weird way.
