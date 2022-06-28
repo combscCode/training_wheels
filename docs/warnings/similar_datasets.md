@@ -14,9 +14,10 @@ in a real-world scenario where it has to make predictions on novel inputs.
 Example:
 ```python
 from sklearn import svm
-import seaborn
+import numpy as np
 
-X = seaborn.load_dataset('attention.csv')
+X = np.array([1,2,3,4])
+y = [2,4,6,8]
 clf = svm.SVC()
 clf.fit(X,y)
 

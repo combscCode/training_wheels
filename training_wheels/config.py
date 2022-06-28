@@ -1,3 +1,3 @@
 """Parameters used by the training_wheels module."""
 
-METRICS.MAX_ACCURACY_THRESHOLD = .995
+METRICS_MAX_ACCURACY_THRESHOLD = .995

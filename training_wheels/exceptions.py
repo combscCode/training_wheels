@@ -4,12 +4,12 @@ warnings and exceptions used by Training Wheels.
 """
 
 class SimilarDatasetsWarning(UserWarning):
-	"""Warning class to raise when datasets are too similar.
+  """Warning class to raise when datasets are too similar.
 
-	
-	"""
+  
+  """
 
 class PerformanceWarning(UserWarning):
-	"""Warning class to raise when a model's performance is suspiciously high.
+  """Warning class to raise when a model's performance is suspiciously high.
 
-	"""
+  """
