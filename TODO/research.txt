@@ -1,0 +1,9 @@
+GOAL: We need to get a sense of what "typical" problems are for beginners trying to use sklearn.
+OUTCOME: A text file with examples of common mistakes. There should be links to examples. There
+should be a clear sense of which mistakes are most commonly experienced.
+
+SUGGESTIONS: Trawl Kaggle and Stack Overflow.
+Look through sklearn's documentation and write down stuff that they call out.
+Read through ML textbooks (I'm thinking like kjell's book on data transformations?) and
+see if there are any "obvious best practices" that we could call out.
+Look up tutorials online, see what suggestions they offer.

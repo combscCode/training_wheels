@@ -1,0 +1,15 @@
+This file lists pitfalls that we think would be worthwhile to put boundaries around.
+
+
+The whole issue of ordinal data used by certain models. IE I think random forests can
+handle ordinal values but a NN isn't. It needs to have binary labels or whatever.
+
+Training/Testing splits. Need to research how people do this, what ways you can
+shoot yourself in the foot with it.
+
+Dataset similarity: We should alert the user if their testing dataset is *primarily*
+composed of datapoints that they trained on.
+
+Interpreting metrics: We should alert the user if they get 100% accuracy. We should
+look through typical ways beginners try to interpret their results and try to put
+caveats in for how you interpret something.
