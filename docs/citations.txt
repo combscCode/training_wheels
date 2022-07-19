@@ -1,0 +1,9 @@
+Put good resources you find here. We should cite our sources if we use them to build out this package.
+
+What are common mistakes when working with neural networks?
+https://www.kaggle.com/general/196487
+
+Methods and common mistakes for evaluating models
+
+https://www.kaggle.com/code/lane203j/methods-and-common-mistakes-for-evaluating-models
+

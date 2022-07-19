@@ -21,5 +21,5 @@ y = [2,4,6,8]
 clf = svm.SVC()
 clf.fit(X,y)
 
-clf.predict(X)
+clf.predict(X) # This should raise a UserWarning
 ```

@@ -4,6 +4,8 @@ Look up examples given in sklearn, possible tutorials.
 
 Trying to recommend which models would be appropriate for the given dataset?
 
+Detecting if a dataset is nonlinear is simply running a least squares regression
+and checking the error. High error implies its nonlinear
 
 Let ppl know if they're regressing on binary data.
 
@@ -12,3 +14,5 @@ Look through kjell's book on preprocessing and code triggers for those traps.
 
 
 Needing to normalize data for specific models.`
+
+Detecting imbalanced datasets
