@@ -1,3 +1,7 @@
 [project]
 name = "training_wheels"
 version = "0.0.1"
+
+# https://github.com/pypa/setuptools/issues/3197#issuecomment-1078770109
+[tool.setuptools]
+py-modules = []
