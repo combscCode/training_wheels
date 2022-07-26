@@ -2,5 +2,5 @@
 
 PYTEST ?= pytest
 
-test:
+tests:
 	$(PYTEST) training_wheels
