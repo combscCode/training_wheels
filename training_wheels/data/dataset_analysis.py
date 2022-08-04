@@ -1,4 +1,3 @@
-from scipy.stats import entropy
 import numpy as np
 
 """Dealing with imbalanced datasets when there's only two labels is easy.
@@ -12,12 +11,20 @@ def get_max_label_imbalance(y, raw_count=False):
     """
 
     y = np.asarray(y)
-    frequency = np.unique(y, return_counts=True)[1]
+    frequency = np.sort(np.unique(y, return_counts=True)[1])[::-1]
+    print(frequency)
+
+    if len(frequency) < 2:
+        m = ('The labelset passed to get_label_imbalance_array has less than '
+             ' 2 unique classes.')
+        raise RuntimeError(m)
+
+
     if raw_count:
         return frequency[0] - frequency[-1]
     return (frequency[0] - frequency[-1]) / len(y)
 
-def get_label_imabalance_array(y, raw_count=False):
+def get_label_imbalance_array(y, raw_count=False):
     """
     Return a ndarray quantifying the relative differences between classes.
 
@@ -37,7 +44,13 @@ def get_label_imabalance_array(y, raw_count=False):
          [-0.5   -0.125  0.   ]]
     """
     y = np.asarray(y)
-    frequency = np.unique(y, return_counts=True)[1]
+    frequency = np.sort(np.unique(y, return_counts=True)[1])[::-1]
+
+    if len(frequency) < 2:
+        m = ('The labelset passed to get_label_imbalance_array has less than '
+             ' 2 unique classes.')
+        raise RuntimeError(m)
+
     ret = np.zeros((len(frequency), len(frequency)))
     print(frequency)
     for i in range(0, len(frequency) - 1):
