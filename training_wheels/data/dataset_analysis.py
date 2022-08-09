@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.stats import shapiro, anderson, kstest
 
 """Dealing with imbalanced datasets when there's only two labels is easy.
 Generalizing to a multi-class situation seems a bit more challenging."""
@@ -77,7 +78,17 @@ def is_normalized(X):
             ret.append("no")
     return ret
 
-def normal_likelihood(X):
-    """Return a list specifying the likelihood that the associated column is normal distributed"""
+def normal_likelihood(X,test="shapiro"):
+    """Return a list specifying the likelihood that the associated column is normally distributed"""
     X = np.asarray(X)
-    
+    ret = []
+    if test = "shapiro":
+        for i in range(X.shape[1]):
+            ret.append(shapiro(X[:,i])[1])
+    elif test = "anderson":
+        for i in range(X.shape[1]):
+            ret.append(anderson(X[:,i],'norm')[1])
+    elif test = "kstest":
+        for i in range(X.shape[1]):
+            ret.append(kstest(X[:,i],'norm',alternative='two-sided'))
+    return ret
