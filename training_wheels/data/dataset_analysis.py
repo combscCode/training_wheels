@@ -60,3 +60,24 @@ def get_label_imbalance_array(y, raw_count=False):
     if raw_count:
         return ret
     return ret / len(y)
+
+def is_normalized(X):
+    """
+    Return a list specifying whether the associated column has been
+    scaled and shaped to the standard normal distribution.
+    """    
+    X = np.asarray(X)
+    ave = np.average(X,axis=0)
+    std = np.std(X,axis=0)
+    ret = []
+    for i in ave:
+        if ave[i] = 0 and std[i] = 1:
+            ret.append("yes")
+        else:
+            ret.append("no")
+    return ret
+
+def normal_likelihood(X):
+    """Return a list specifying the likelihood that the associated column is normal distributed"""
+    X = np.asarray(X)
+    
