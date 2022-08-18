@@ -1,4 +1,5 @@
 import numpy as np
+import statistics as st
 
 """Dealing with imbalanced datasets when there's only two labels is easy.
 Generalizing to a multi-class situation seems a bit more challenging."""
@@ -61,23 +62,52 @@ def get_label_imbalance_array(y, raw_count=False):
         return ret
     return ret / len(y)
 
-def is_normalized(X):
+def get_scale_array(X):
     """
-    Return a list specifying whether the associated column has been
-    scaled and shaped to the standard normal distribution.
+    Return an array with tuples with the ratio of the mean and median of the associated features.
+
+    Median and mean are calculated for each feature and divided by eachother to get a tuple of ratios.
+    These ratios are then added to an array with position corresponding to the feaure positions.
+
+    For example:
+        Given an array of [[100, 2, 6 ],
+                           [ 50, 6, 2 ],
+                           [ 70, 5, 30]]
+
+        the returned array looks like:
+        [[(1.0 ,  1.0), (14.0, 18.25), (11.67, 6.08)],
+         [(0.07, 0.05), ( 1.0,   1.0), ( 0.83, 0.33)],
+         [(0.09, 0.16), ( 1.2,   3.0), (  1.0, 1.0 )]]
     """    
     X = np.asarray(X)
-    ave = np.average(X,axis=0)
-    std = np.std(X,axis=0)
-    ret = []
-    for i in ave:
-        if ave[i] = 0 and std[i] = 1:
-            ret.append("yes")
+    if len(np.shape(X)) != 2:
+        if len(np.shape(X)) > 2:
+            m_more = ('The dataset passed to get_scale_array is greater the 2 dimensions.')
+            raise RuntimeError(m_more)
+
         else:
-            ret.append("no")
+            m_less = ('The dataset passed to get_scale_array is less than 2 dimensions.')
+            raise RuntimeError(m_less)
+
+    elif np.shape(X)[1] < 2:
+        m_scale = ('The dataset passed to get_scale_array has fewer than 2 predictors. No scaling is needed.')
+        raise RuntimeError(m_scale)
+    
+    X_transformed = X.T
+    ret = []
+    for i in range(np.shape(X_transformed)[0]):
+        temp = []
+        for j in range(np.shape(X_transformed)[0]):
+            temp.append((round(st.median(X_transformed[i])/st.median(X_transformed[j]),2),round(st.mean(X_transformed[i])/st.mean(X_transformed[j]),2)))
+        ret.append(temp)
     return ret
 
-def normal_likelihood(X):
-    """Return a list specifying the likelihood that the associated column is normal distributed"""
+def get_deviation(X):
+    """
+    Return a list with the standard deviation for each column.
+    """
     X = np.asarray(X)
-    
+    ret = []
+    for i in range(np.shape(X)[1]):
+        ret.append(round(np.std(X[:,i]),2))
+    return ret
