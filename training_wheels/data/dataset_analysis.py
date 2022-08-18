@@ -3,17 +3,16 @@ import statistics as st
 
 """Dealing with imbalanced datasets when there's only two labels is easy.
 Generalizing to a multi-class situation seems a bit more challenging."""
-def get_max_label_imbalance(y, raw_count=False):
+def get_label_imbalance_max(y, raw_count=False):
     """
     Return the difference between the frequencies of your most and
-    least frequent classes divided by the length of your dataset.
+    least frequent classes normalized by the length of your dataset.
 
     Set raw_count to True to obtain frequencies rather than ratios.
     """
 
     y = np.asarray(y)
     frequency = np.sort(np.unique(y, return_counts=True)[1])[::-1]
-    print(frequency)
 
     if len(frequency) < 2:
         m = ('The labelset passed to get_label_imbalance_array has less than '
@@ -53,7 +52,7 @@ def get_label_imbalance_array(y, raw_count=False):
         raise RuntimeError(m)
 
     ret = np.zeros((len(frequency), len(frequency)))
-    print(frequency)
+
     for i in range(0, len(frequency) - 1):
         for j in range(i + 1, len(frequency)):
             ret[i, j] = frequency[i] - frequency[j]
